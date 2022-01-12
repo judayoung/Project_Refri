@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Refri.categ.CategMapper">
+
+	<resultMap id="categ" type="com.example.Refri.categ.Categ">
+	
+		<result property="num" column="num" />
+		<result property="cate" column="cate" />
+		<result property="name" column="name" />
+	
+	</resultMap>
+	
+	
+	<insert id="insert" parameterType="com.example.Refri.categ.Categ">
+		insert into categ
+		values(seq_categ.nextval,#{cate},#{name})
+	</insert>
+	
+	<select id="select" resultMap="categ">
+		select * from categ
+		where num=#{num}
+	</select>
+	
+	<select id="selectAll" resultMap="categ">
+		select * from categ order by num
+	</select>
+	
+	<select id="selectByCate" resultMap="categ" parameterType="String">
+		select * from categ where cate=#{cate} order by num
+	</select>
+
+
+</mapper>

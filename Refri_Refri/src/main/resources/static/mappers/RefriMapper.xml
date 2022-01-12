@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Refri.refri.RefriMapper">
+
+	<resultMap id="refri" type="com.example.Refri.refri.Refri">
+		<result property="num" column="num" />
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.example.Refri.refri.Refri">
+		insert into refri 
+		values(seq_refri.nextval, #{id}, #{name}, #{type})
+	</insert>
+	
+	<select id="select" resultMap="refri" parameterType="int">
+		select * from refri
+		where num=#{num}
+	</select>
+	
+	<select id="selectAll" resultMap="refri" parameterType="String">
+		select * from refri
+		where id=#{id} order by num
+	</select>
+
+</mapper>

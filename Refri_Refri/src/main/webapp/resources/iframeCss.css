@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+body{
+	overflow-x: hidden;
+	overflow-y: auto;
+	
+	background-color: white;
+	font-size: 9px;
+}
+
+span{
+	font-weight: bolder;
+	color: blue;
+}
+
+span:hover{
+	background-color: yellow;
+	cursor: pointer;
+	
+}
+
+.div_food{
+	display: inline-block;
+}
+.div_food:hover{
+	background-color: gray;
+	cursor: pointer;
+}

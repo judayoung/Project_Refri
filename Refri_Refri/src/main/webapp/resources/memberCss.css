@@ -1,0 +1,202 @@
+
+@charset "UTF-8";
+
+/* main.jsp */
+#header{
+	background-color:#D4F4FA;
+	padding: 5px;
+}
+
+#aside{
+	float: left;
+	width: 20%;
+	background-color:#FFEBFF;
+	margin: 5px;
+	padding: 5px;
+}
+
+#section1{
+	float: left;
+	width: 70%;
+	background-color:#CEFBC9;
+	margin: 5px;
+	padding: 5px;
+}
+
+#footer{
+	clear: both;
+	background-color:#B2CCFF;
+	padding: 5px;
+}
+
+
+/* ul */
+
+ul{
+	margin: 1px;
+	padding: 2px 2px 2px 2px;
+	/*border: 1px solid black;*/
+}
+ul li {
+	display:inline;
+	margin: 1px;
+	padding: 2px 2px 2px 2px;
+	font-size: 11px;
+}
+
+
+
+/* span */
+span{
+	font-weight: bolder;
+	color: blue;
+}
+
+span:hover{
+	background-color: yellow;
+	cursor: pointer;
+	
+}
+
+
+/* */
+b{
+	font-size: 9px;
+	color: #F29661;
+}
+
+
+/* hover      input button */
+input[type=button]:hover:not(.green){
+	background-color: yellow;
+	cursor: pointer;
+}
+
+tr:hover{
+	background-color: #E8D9FF;
+	cursor: pointer;
+}
+
+input[type=submit]:hover, .green:hover{
+	background-color: green;
+	color: white;
+	cursor: pointer;
+}
+
+input[type=reset]:hover{
+	background-color: red;
+	color: white;
+	cursor: pointer;
+}
+
+
+/* table */
+th{
+	background-color:#B5B2FF;
+}
+
+
+
+/* case/list.jsp */
+#can table{	
+	width: 95%;
+	height: 60vw;
+}
+
+#can table tr td{
+	position: relative;
+	vertical-align: top;
+	
+	background-color: white;
+	color: gray;
+	font-size: 10px;
+}
+#can table tr td input{
+	font-size: 0.85em;
+}
+
+#can table tr .wing{
+	width: 23%;	
+}
+
+#can table tr .cen{
+	width: 54%;	
+}
+#can table tr .half{
+	width: 27%;	
+}
+#can table tr td:hover{
+	background-color: yellow;
+	cursor: pointer;
+	color: blue;
+	font-weight: bolder;
+}
+
+
+
+/* iframe */
+#can table tr .wing iframe{ 
+	position: absolute;
+
+	width: 90%;
+	height: 84%;
+	margin: 1px;
+}
+#can table tr .cen iframe{ 
+	position: absolute;
+
+	width: 94%;
+	height: 70%;
+	margin: 1px;
+}
+#can table tr .half iframe{ 
+	position: absolute;
+
+	width: 90%;
+	height: 70%;
+	margin: 1px;
+}
+
+
+
+/* addFood.jsp */
+#addFood{
+	font-size: 13px;
+}
+
+#addFood h3{
+	text-align: center;
+}
+
+#addFood input{
+	font-size: 0.85em;
+}
+
+#addFood .necessary{
+	color: blue;
+	font-weight: bolder;
+}
+
+#addFood input[type=text]:not(.textHalf),
+#addFood input[type=file],
+#addFood input[type=date]:not(.dateHalf){
+	width: 90%;
+}
+
+#addFood #div_unit *{
+	padding: 1px;
+}
+
+#addFood .textHalf{
+	width: 25%;
+}
+#addFood .dateHalf{
+	width: 50%;
+}
+
+#addFood textarea{
+	width: 90%;
+}
+
+
+/* addCateg */

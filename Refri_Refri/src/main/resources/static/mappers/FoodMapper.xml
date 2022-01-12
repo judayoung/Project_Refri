@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Refri.food.FoodMapper">
+
+	<resultMap id="food" type="com.example.Refri.food.Food">
+		<result property="num" column="num" />
+		<result property="c_num" column="c_num" />
+		<result property="cate" column="cate" />
+		<result property="name" column="name" />
+		<result property="quan" column="quan" />
+		<result property="unit" column="unit" />
+		<result property="info" column="info" />
+		<result property="up_date" column="up_date" />
+		<result property="shelfdate" column="shelfdate" />
+		<result property="usedate" column="usedate" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.example.Refri.food.Food">
+		insert into food
+		values(seq_food.nextval, #{c_num}, #{cate}, #{name},
+			#{quan}, #{unit}, #{info},
+			#{up_date}, #{shelfdate}, #{usedate} )
+	</insert>
+	
+	<select id="select" resultMap="food" parameterType="int">
+		select * from food
+		where num=#{num}
+	</select>
+	<select id="selectByCase" resultMap="food" parameterType="int">
+		select * from food
+		where c_num=#{c_num}
+	</select>
+	<select id="selectAll" resultMap="food">
+		select * from food order by num
+	</select>
+	<delete id="delete" parameterType="int">
+		delete food where num=#{num}
+	</delete>
+	
+
+
+</mapper>

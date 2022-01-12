@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Refri.rcase.CaseMapper">
+
+	<resultMap id="case" type="com.example.Refri.rcase.Case">
+		<result property="num" column="num" />
+		<result property="r_num" column="r_num" />
+		<result property="name" column="name" />
+		<result property="disp" column="disp" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.example.Refri.rcase.Case">
+		insert into case 
+		values(seq_case.nextval, #{r_num}, #{name}, #{disp})
+	</insert>
+	
+	<select id="select" resultMap="case" parameterType="int">
+		select * from case
+		where num=#{num}
+	</select>
+	
+	<select id="selectByRefri" resultMap="case" parameterType="int">
+		select * from case
+		where r_num=#{r_num} order by num
+	</select>
+	
+	<select id="selectById" resultMap="case" parameterType="java.util.List">
+		select * from case
+		where r_num in 
+		  ( <foreach collection="list" item="item" separator=",">#{item}</foreach> )
+	</select>
+	
+	<update id="update" parameterType="com.example.Refri.rcase.Case">
+		update case
+		set r_num=#{r_num}, name=#{name}, disp=#{disp} where num=#{num}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete case where num=#{num}
+	</delete>
+
+</mapper>

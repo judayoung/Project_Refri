@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.Refri.mem.RefrimemMapper">
+
+	<resultMap id="mem" type="com.example.Refri.mem.Refrimem">
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="nickname" column="nickname" />
+		<result property="pwd_q" column="pwd_q" />
+		<result property="pwd_a" column="pwd_a" />
+		<result property="family" column="family" />
+	</resultMap>
+	
+	<select id="select" resultMap="mem" parameterType="String">
+		select * from refrimem where id=#{id}
+	</select>
+
+</mapper>
