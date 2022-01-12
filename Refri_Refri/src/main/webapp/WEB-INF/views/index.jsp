@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     	
-    <title>집에 뭐 있지?12</title>
+    <title>집에 뭐 있지?123</title>
 
 	<!-- 1. Css -->
 	<!-- webapp/resources 가 디폴트 경로.  -->	
