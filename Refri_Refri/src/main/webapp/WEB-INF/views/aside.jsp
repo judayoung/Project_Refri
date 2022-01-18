@@ -1,27 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="/WEB-INF/views/header.jsp" %>  
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	
-    <title>집에 뭐 있지?</title>
 
 </head>
 <body>
 
-
-<div class="container1">
-
-	<div class="board1">
-		<h1>집에 뭐있지?</h1>
-	</div>
-	
-	
-	<div class="aside1">
 
 		<!-- =======로그인 form 시작==================================================== -->
             <form action="/member/login" method="post">
@@ -41,12 +29,8 @@
               </fieldset>
             </form>
 		<!-- =======로그인 form 끝==================================================== -->
-	</div>
 
-
-</div>
 
 
 </body>
-	<%@ include file="/WEB-INF/views/footer.jsp" %>  
 </html>
