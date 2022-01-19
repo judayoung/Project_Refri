@@ -13,8 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Refri</name>
 	<description>Refrigerator project for Spring Boot</description>
-	<packaging>war</packaging>
-	
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -79,7 +77,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>${artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

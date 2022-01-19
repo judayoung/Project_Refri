@@ -16,26 +16,23 @@ href="${pageContext.request.contextPath }/resources/iframeCss.css" />
 var foodNum=0;
 
 function fn_delFood(num){
-	var flag=confirm("정말 이 음식을 삭제하겠습니까?");
-	if(flag){
-		location.href="/food/del?num="+num;
-	}
-	return;
+	location.href="/food/del?num="+num;
 }
 
 $(document).ready(function(){
-	
 	$(".div_food").on("mousedown",function(e){
 		foodNum=$(this).attr("id");
 		
 		if(e.which===3){
-			fn_delFood(foodNum);
+			var flag=confirm("정말 이 음식을 삭제하겠습니까?");
+			if(flag){
+				fn_delFood(foodNum);
+			}
 			
 		}else if(e.which===1){
 			
 		}
 	});
-	
 });
 </script>
 

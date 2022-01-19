@@ -86,21 +86,22 @@ public class FoodController {
 	} */
 	
 	@RequestMapping("img")
-	public ResponseEntity<byte[]> imgload(@RequestParam("num") int num){
+	public ResponseEntity<byte[]> imgload(String num){
 		String img="";
+		if(num!=null && !num.equals("")) {
+			img="0.jpg";
+		}
 		
 		File dir=new File(path);
 		if(dir.exists() ) {
 			String[] fileNames=dir.list();
-			for(int i=0;i<fileNames.length;i++) {				String fileName=fileNames[i].split("\\.")[0];
-
-				if(num==Integer.parseInt(fileName) ) {
+			for(int i=0;i<fileNames.length;i++) {				String numExist=fileNames[i].split("\\.")[0];
+				if(num.equals(numExist) ) {
 					img=fileNames[i];
 					break;
 				}
 			}
 		}
-		img=(img.equals(""))? "0.jpg":img;
 		
 		File imgFile=new File(path+"\\"+img);
 		
@@ -169,7 +170,7 @@ public class FoodController {
 	
 	
 	@RequestMapping("del")
-	public String del(Food food) {
+	public ModelAndView del(Food food) {
 		int num=food.getNum();
 		service.delFood(num);
 		
@@ -179,17 +180,19 @@ public class FoodController {
 			for(int i=0;i<fileNames.length;i++) {
 				String[] arr=fileNames[i].split("\\.");
 				String fileName=arr[0];
+				String fileFormat=arr[1];
 				
 				if(num==Integer.parseInt(fileName)) {
 					System.out.println(fileNames[i]);
-					File f=new File(path+"\\"+fileNames[i]);
+					File f=new File(path+"\\"+num+"."+fileFormat);
 					f.delete();
 					break;
 				}
 			}
 		}
 		
-		return "member/main";
+		ModelAndView mav = new ModelAndView("member/main");
+		return mav;
 	}
 
 }

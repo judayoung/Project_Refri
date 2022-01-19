@@ -4,116 +4,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	
-    <title>Main</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 
-	<!-- 1. Css -->
-	<!-- webapp/resources 가 디폴트 경로.  -->	
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/layoutit_css.css" />
 
-	<!-- 2. JS -->
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    
-	<script id="_carbonads_projs" type="text/javascript" src="https://srv.carbonads.net/ads/CKYIE23N.json?segment=placement:bootswatchcom&amp;callback=_carbonads_go"></script>
-	<script src="../_vendor/jquery/dist/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/bootstrap.bundle.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/bootstrap.bundle.js"></script>
-    <script src="../_assets/js/custom.js"></script>
+	<!-- 1. Bootstrap Css / Bootwatch cosmo -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.1/dist/cosmo/bootstrap.min.css" 
+	crossorigin="anonymous">
 
+    <!-- 2. jquery -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<!-- 3. Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+     
+
+<script>
+$(document).ready(function(){
+	$(".addRefri").click(function(){
+		location.href="/refri/addSwitch";
+	});	
+	$(".listRefri").click(function(){
+		location.href="/refri/listSwitch";
+	});
+	
+	$(".listCase").click(function(){
+		location.href="/case/listSwitch";
+	});
+	$(".addCase").click(function(){
+		location.href="/case/addSwitch";
+	});
+	
+	$(".addCateg").click(function(){
+		location.href="/categ/addSwitch";
+	});
+	
+	
+	
+});
+</script>
 
 </head>
 <body>
 
+<div id="loginInfo" style="text-align: right;">
+	<p class="text-primary">
+		${sessionScope.id } 님 로그인 중. 
+		<button type="button" class="btn btn-secondary" style="font-size: 9px; padding: 1px;">로그아웃</button>
+	</p>
+	<p class="text-primary">
+		<b>현재 냉장고 : ${sessionScope.r.name }</b>
+	</p>
+</div>
 
-<div class="container1">
-	
-	
-	<div class="title1">
-	  <!-- Navbar
-      ================================================== -->
-      <div class="bs-docs-section clearfix">
-        <div class="row">
-          <div class="col-lg-12">
+<div id="tryResult">
+	<b>${caseListSwitchResult }</b>
+	<b>${caseAddSwitchResult }</b> 
+</div>
 
-            <div class="bs-component">
-              <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="#">집에 뭐있지?</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarColor01">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="/case/listSwitch">케이스 리스트
-                        <span class="sr-only">(current)</span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">음식 리스트</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/refri/listSwitch">냉장고 리스트</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/board/listFreshSwitch">음식관리 팁</a>
-                    </li>
-                    
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">추가하기</a>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">음식 추가하기</a>
-                        <a class="dropdown-item" href="/case/addSwitch">케이스 추가하기</a>
-                        <a class="dropdown-item" href="/refri/addSwitch">냉장고 추가하기</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/categ/addSwitch">카테고리 추가하기</a>
-                      </div>
-                    </li>
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                  </form>
-                </div>
-              </nav>
-        	</div>
-        	            
-          </div>
-        </div>
-      </div>
-	  <!-- Navbar 끝
-      ================================================== -->
-	</div>
-	
+<div id="header">
 
-	<div class="aside1">
-		aside
-	</div>
-	
-	
-	<div class="section1">
-		<c:set var="url">
-			<c:if test="${sessionScope.section=='refriList' }">/refri/list</c:if>		
-			<c:if test="${sessionScope.section=='refriAdd' }">/refri/addRefri</c:if>
-			<c:if test="${sessionScope.section=='caseList' }">/case/list</c:if>
-			<c:if test="${sessionScope.section=='caseAdd' }">/case/addCase</c:if>
-			<c:if test="${sessionScope.section=='categAdd' }">/categ/addCateg</c:if>
-			<c:if test="${sessionScope.section=='boardFreshList' }">/board/listFresh</c:if>
-			<c:if test="${sessionScope.section=='boardFreshAdd' }">/board/addFresh</c:if>
-		</c:set>
-		<c:import url="${url }" />
-		
-	</div>
-	
-	<div class="footer1">
-		21/12/09 ~ 22/01/ - 집에 뭐있지?
+	<div id="nav1">
+		<ul class="nav nav-pills">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">리스트/추가하기</a>
+				
+				<div class="dropdown-menu" style="">
+					<a class="dropdown-item" href="#"><span class="listRefri">냉장고 리스트</span></a>
+      				<a class="dropdown-item" href="#"><span class="listCase">케이스 리스트</span></a>
+      				<a class="dropdown-item" href="#">음식 리스트</a>
+      				<a class="dropdown-item" href="#">음식기한 리스트</a>
+      				
+      				<div class="dropdown-divider"></div>
+      				<a class="dropdown-item" href="#"><span class="addRefri">냉장고 추가하기</span></a>
+      				<a class="dropdown-item" href="#"><span class="addCase">케이스 추가하기</span></a>
+      				<a class="dropdown-item" href="#"><span class="addCateg">카테고리 추가하기</span></a>
+      				<a class="dropdown-item" href="#">음식 추가하기</a>
+    			</div>
+    			
+			</li>
+		</ul>
+	<hr></div>
+
+</div>
+
+
+	<div style="padding: 20px;">
+		<c:if test="${sessionScope.section=='refriList' }"><c:import url="/refri/list" /></c:if>		
+		<c:if test="${sessionScope.section=='refriAdd' }"><c:import url="/refri/addRefri" /></c:if>
+		<c:if test="${sessionScope.section=='caseList' }"><c:import url="/case/list" /></c:if>
+		<c:if test="${sessionScope.section=='caseAdd' }"><c:import url="/case/addCase" /></c:if>
+		<c:if test="${sessionScope.section=='categAdd' }"><c:import url="/categ/addCateg" /></c:if>
 	</div>
 
 
+<div id="footer">
+	21/12/09 ~ 22/02/10 - 집에 뭐있지?
 </div>
 
 

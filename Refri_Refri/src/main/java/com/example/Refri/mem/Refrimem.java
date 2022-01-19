@@ -4,7 +4,6 @@ public class Refrimem {
 
 	private String id;
 	private String pwd;
-	private String nickname;
 	private String pwd_q;
 	private String pwd_a;
 	private String family;
@@ -19,20 +18,18 @@ public class Refrimem {
 		this.pwd = pwd;
 	}
 
-	public Refrimem(String id, String pwd, String nickname, String pwd_q, String pwd_a) {
+	public Refrimem(String id, String pwd, String pwd_q, String pwd_a) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
-		this.nickname=nickname;
 		this.pwd_q = pwd_q;
 		this.pwd_a = pwd_a;
 	}
 
-	public Refrimem(String id, String pwd,String nickname,  String pwd_q, String pwd_a, String family) {
+	public Refrimem(String id, String pwd, String pwd_q, String pwd_a, String family) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
-		this.nickname=nickname;
 		this.pwd_q = pwd_q;
 		this.pwd_a = pwd_a;
 		this.family = family;
@@ -78,20 +75,10 @@ public class Refrimem {
 		this.family = family;
 	}
 
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
 	@Override
 	public String toString() {
-		return "Refrimem [id=" + id + ", pwd=" + pwd + ", nickname=" + nickname + ", pwd_q=" + pwd_q + ", pwd_a="
-				+ pwd_a + ", family=" + family + "]";
+		return "Refrimem [id=" + id + ", pwd=" + pwd + ", pwd_q=" + pwd_q + ", pwd_a=" + pwd_a + ", family=" + family
+				+ "]";
 	}
-
-	
 
 }

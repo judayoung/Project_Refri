@@ -44,8 +44,6 @@ $(document).ready(function(){
 </head>
 <body>
 
-
-
 <div id="refri_list">
 	<h3>냉장고 리스트 <span id="info" style="font-size:10px">좌:케이스추가 우:냉장고편집</span></h3>
 	

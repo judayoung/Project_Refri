@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="/WEB-INF/views/header.jsp" %>
-    <%@ include file="/WEB-INF/views/myInfo.jsp" %> 
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	
-    <title>집에 뭐 있지?</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<!-- 1. Bootstrap Css / Bootwatch cosmo -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.1/dist/cosmo/bootstrap.min.css" 
+	crossorigin="anonymous">
+	
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script>
 var c_num=0;
@@ -137,132 +139,11 @@ $(document).ready(function(){
 <body>
 
 
-<h1>집에 뭐있지?</h1>
-
-<div class="container2">
-
-	<div class="aside2">
-		<c:import url="./aside.jsp" />
-	</div>
-
-	<div class="section2">
-	
-	
-
-	<div class="bs-docs-section">
-		<div class="row">
-		
-		  <!-- 1줄 시작 -->
-          <div class="col-lg-4">
-            <div class="bs-component">
-              <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Primary card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="card border-primary mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Primary card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Secondary card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="card bg-secondary mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Secondary card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- 1줄 끝 -->
-          
-          <!-- 2줄 시작 -->
-          <div class="col-lg-4">
-            <div class="bs-component">
-              <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Warning card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="card border-success mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Success card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="card border-danger mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Danger card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Info card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-		  <!-- 2줄 끝 -->
-		  
-		  <!-- 3줄 시작 -->
-          <div class="col-lg-4">
-            <div class="bs-component">
-              <div class="card border-dark mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Dark card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="card border-warning mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Warning card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="card border-info mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Info card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-              <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                  <h4 class="card-title">Dark card title</h4>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-		  <!-- 3줄 끝 -->
-                  
-        </div>  
-	</div>
 
 
 
 <div id="case_list">
+	<h3><b>'${sessionScope.r.name }'</b> 케이스 리스트</h3>
 	
 	<c:if test="${empty list }"> <b>'${sessionScope.r.name }'</b>에는 케이스가 없습니다. <br><br></c:if>
 	
@@ -308,13 +189,5 @@ $(document).ready(function(){
 	
 </div>
 
-	
-	
-	</div>
-
-</div>
-
-
 </body>
-	<%@ include file="/WEB-INF/views/footer.jsp" %>  
 </html>
