@@ -42,7 +42,7 @@ $(document).ready(function(){
 
 
 	<c:if test="${empty list }">
-		넣은 음식이 없어요~
+		<p class="text-success">넣은 음식이 없어요~</p>
 	</c:if>
 	
 	

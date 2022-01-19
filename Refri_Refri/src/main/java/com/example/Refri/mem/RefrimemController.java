@@ -31,12 +31,14 @@ public class RefrimemController {
 			HttpSession session=req.getSession();
 			session.setAttribute("id", id);
 			// 냉장고가 있으면 첫번째 냉장고의 케이스리스트로, 냉장고가 없으면 냉장고리스트로 간다.
-			session.setAttribute("section", "refriList");	
+			session.setAttribute("section", "refriList");
+			
 			boolean flag=r_service.isRefri(id);
 			if(flag) {
 				Refri r=r_service.getFirst(id);
 				session.setAttribute("r", r);
 				session.setAttribute("section", "caseList");
+				System.out.println("----case/list");
 			}
 			
 			mav.setViewName("member/main");

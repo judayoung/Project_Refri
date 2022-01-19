@@ -46,7 +46,7 @@ $(document).ready(function(){
 </script>
 
 </head>
-<body>
+<body style="padding: 10px;">
 
 <div id="loginInfo" style="text-align: right;">
 	<p class="text-primary">
@@ -100,7 +100,7 @@ $(document).ready(function(){
 	</div>
 
 
-<div id="footer">
+<div id="footer" style="clear:both;">
 	21/12/09 ~ 22/02/10 - 집에 뭐있지?
 </div>
 

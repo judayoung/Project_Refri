@@ -10,8 +10,10 @@
 	<!-- 1. Bootstrap Css / Bootwatch cosmo -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.1/dist/cosmo/bootstrap.min.css" 
 	crossorigin="anonymous">
-	
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- 2. jquery -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 
 <script>
 var c_num=0;
@@ -31,8 +33,8 @@ function fn_loadDisp(url, sendData){
 		//alert(list.length);  //list.size 나 list.size()안됨. 배열형태라서.
 		for(var i=0;i<list.length;i++){
 			var c=list[i];
-			var html=c.disp+" "+c.name+" ";
-			html+="<input onclick='fn_addFoodPopup("+c.num+")' class='green' type='button' value='+' >";
+			var html=c.disp+" : "+c.name+" ";
+			html+="<button onclick='fn_addFoodPopup("+c.num+")' class='btn btn-outline-warning btn-sm' type=button style='font-size: 8px; padding-left: 5px; padding-right: 5px;'> + </button>";
 			html+="<br><div id='disp"+c.disp+"'></div>";
 
 			$("#"+c.disp).html(html);
@@ -62,11 +64,17 @@ function fn_addFoodPopup(c_num){
 
 
 $(document).ready(function(){
+	// Tips : hide , toggle
+	$(".tip").hide();
+	$("#tips").click(function(){
+		$(".tip").toggle();
+	});
+	
 	// 1. Loading Display.  진열장에 세팅한 케이스 불러오기.
 	fn_loadDisp("/case/listDisp",null);
 	
 	// 2. Switch Add Case.  케이스 추가하기로 화면 변경.
-	$(".addCase").click(function(){
+	$("#addCase").click(function(){
 		location.href="/case/addSwitch";
 	});
 	
@@ -75,17 +83,14 @@ $(document).ready(function(){
 	$(".oneCase").mousedown(function(e){
 		// 케이스 리스트 좌클릭시 선택, 우클릭시 선택취소.
 		$(".oneCase").css("background-color","");
-		$(".oneCase").css("color","");
 		
 		if(e.which===3){
 			$(this).css("background-color","");
-			$(this).css("color","");
 			c_num=0;
 			c_name="";
 			$("#selectCase").text(c_name);
 		}else if(e.which===1){
-			$(this).css("background-color","green");
-			$(this).css("color","yellow");
+			$(this).css("background-color","#B2CCFF");
 			var td=$(this).children();
 			c_num=td.eq(0).text();
 			c_name=td.eq(1).text();
@@ -135,6 +140,32 @@ $(document).ready(function(){
 </script>
 
 
+<style>
+
+#parent_div::after{
+	display: block;
+	content="";
+	clear: both;
+}
+#case_list{
+	float: left; width: 220px;
+}
+#refri{
+	float: left; width: 70%; margin-left: 10px;
+}
+
+
+#refri_case tr:hover{
+	none;
+}
+
+#refri_case td:hover{
+	background: #B2CCFF;
+}
+
+</style>
+
+
 </head>
 <body>
 
@@ -142,50 +173,101 @@ $(document).ready(function(){
 
 
 
-<div id="case_list">
-	<h3><b>'${sessionScope.r.name }'</b> 케이스 리스트</h3>
+<div id="parent_div">
+	<h3>
+		<b>'${sessionScope.r.name }'</b> 케이스 리스트  
+		<button type="button" id="addCase" class="btn btn-primary">케이스 추가하기</button>
+		<button type="button" id="tips" class="btn btn-outline-primary">Tips</button>
+	</h3>
 	
-	<c:if test="${empty list }"> <b>'${sessionScope.r.name }'</b>에는 케이스가 없습니다. <br><br></c:if>
-	
-	<c:if test="${not empty list }">
-		
-		<div id="dispLoad">
-			<c:forEach items="${dispList }" var="d">
-				<input type="hidden" id="" value="">
-			</c:forEach>
-		</div>
-	
-		<div id="can">
-			<b>케이스를 클릭해서 이동시키세요! (우클릭 케이스 제거)</b>
-			<table border=1 cellspacing=0>
-				<tr><td rowspan=2 class="wing" id=1>1<br></td>
-				<td colspan=2 class="cen" id=2>2<br></td>
-				<td rowspan=2 class="wing" id=4>4<br></td></tr>
-				<tr><td colspan=2 class="cen" id=3>3<br></td><tr>
-				
-				<tr><td rowspan=2 class="wing" id=5>5<br></td>
-				<td  class="half" id=6>6<br></td>
-				<td  class="half" id=8>8<br></td>
-				<td rowspan=2 class="wing" id=10>10<br></td></tr>
-				<tr><td  class="half" id=7>7<br></td>
-				<td  class="half" id=9>9<br></td></tr>
-			</table>			
-			
-		<hr></div>	
-	
-		<b>케이스 좌클릭하면 냉장고 진열장위치를 선택가능! (우클릭시 선택 취소.) </b><br>
-		<b>선택한 케이스 : <b id="selectCase"></b> </b>
-		<table>
-			<tr><th>num</th><th>name</th><th>disp</th></tr>
-			
-			<c:forEach items="${list }" var="c">
-				<tr class="oneCase"><td>${c.num }</td><td>${c.name }</td><td>${c.disp }</td></tr>
-				
-			</c:forEach>
-		</table><br>
+	<c:if test="${empty list }">
+		<h3><b>'${sessionScope.r.name }'</b>에는 케이스가 없습니다. </h3>
 	</c:if>
 	
-	<span class="addCase">케이스 추가하기</span> <br><br>
+
+
+<c:if test="${not empty list }">
+	
+	
+	<div class="tip">
+		<p class="text-primary">
+			<span class="badge badge-pill badge-primary">Tip</span>
+			케이스 좌클릭하면 냉장고 진열장위치를 선택가능! (우클릭시 선택 취소.) 
+		</p>
+	</div>
+	
+	
+	<div id="dispLoad">
+		<c:forEach items="${dispList }" var="d">
+			<input type="hidden" id="" value="">
+		</c:forEach>
+	</div> 
+	
+
+	<!-- ==== 케이스 리스트 =========================== -->
+	<div id="case_list">
+		<h6>선택한 케이스 : <b id="selectCase"></b> </h6>
+
+		<table class="table table-hover">
+		    <tr class="table-secondary">
+    			<th scope="row" style="width: 60px;">케이스 번호</th>
+      			<td style="width: 120px;">케이스 이름</td>
+      			<td style="width: 75px;">진열장 위치번호</td>
+    		</tr>
+    		<c:forEach items="${list }" var="c">
+    			<tr class="oneCase"><td>${c.num }</td><td>${c.name }</td><td>${c.disp }</td></tr>
+    		</c:forEach>
+		</table>
+	</div>
+	<!-- ==== 케이스 리스트 =========================== -->
+	
+		
+		<!-- ==== 냉장고 케이스 =========================== -->	
+		<div id="refri">
+			<div class="tip">
+				<p class="text-primary">
+					<span class="badge badge-pill badge-primary">Tip</span>
+					케이스를 클릭해서 이동시키세요! (우클릭 케이스 제거)
+				</p>
+			</div>
+			
+			
+			<table id="refri_case" class="table table-hover" border=1 >
+			    <tr class="table-primary" style="text-align: center;">
+      				<th scope="row" style="width: 120px;">${sessionScope.r.name }</th>
+      				<th>왼쪽 날개</th>
+      				<th colspan=2>중앙</th>
+      				<th>오른쪽 날개</th>
+    			</tr>
+    			<tr>
+      				<th scope="row" rowspan=2  style="text-align: center;">상부</th>
+      				<td rowspan=2 class="wing" id=1>1</td>
+      				<td colspan=2 class="cen" id=2>2</td>
+      				<td rowspan=2 class="wing" id=4>4</td>
+      				
+    			</tr>
+    			<tr>
+    				<td colspan=2 class="cen" id=3>3</td>
+    			</tr>
+    			<tr>
+      				<th scope="row" rowspan=2  style="text-align: center;">하부</th>
+      				<td rowspan=2 class="wing" id=5>5<br></td>
+      				<td class="half" id=6>6<br></td>
+      				<td class="half" id=8>8<br></td>
+					<td rowspan=2 class="wing" id=10>10<br></td>
+    			</tr>
+    			<tr>
+      				<td class="half" id=7>7<br></td>
+					<td class="half" id=9>9<br></td>
+    			</tr>
+			</table>
+
+			
+		</div>
+		<!-- ==== 냉장고 케이스 =========================== -->
+	
+	</c:if>
+	
 	
 </div>
 

@@ -124,7 +124,6 @@ public class CaseController {
 		Case c=service.getByDisp(disp, r);
 		
 		ArrayList<Food> foodList=f_service.getByCase(c.getNum());
-		System.out.println(c.getName()+" foodList : "+foodList.size());
 		
 		ModelAndView mav=new ModelAndView("case/disp/disp_all","c",c);
 		mav.addObject("list",foodList);
