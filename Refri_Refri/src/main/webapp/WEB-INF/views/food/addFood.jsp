@@ -123,6 +123,7 @@ $(document).ready(function(){
 		}
 		
 		f.quan.value=(f.quan.value=="")? 0:f.quan.value;
+		f.file.value=(f.file.value=="")? null:f.file.value;
 		
 		f.action="/food/addOne";
 		f.method="post";

@@ -13,27 +13,25 @@ href="${pageContext.request.contextPath }/resources/iframeCss.css" />
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script>
-var foodNum=0;
-
-function fn_delFood(num){
-	location.href="/food/del?num="+num;
+function fn_foodClick(food_num){
+	Swal.fire({ 
+		title: '음식정보를 수정하겠습니까, 삭제하겠습니까?', 
+		icon: 'question', 
+		showCancelButton: true, 
+		confirmButtonColor: '#3085d6', 
+		cancelButtonColor: '#d33',
+		confirmButtonText: '수정', 
+		cancelButtonText: '삭제' 
+	}).then((result) => { 
+		if (result.isConfirmed) { 
+			return false;
+		}else{
+			location.href="/food/del?num="+food_num;
+	    }
+	});	
 }
 
-$(document).ready(function(){
-	$(".div_food").on("mousedown",function(e){
-		foodNum=$(this).attr("id");
-		
-		if(e.which===3){
-			var flag=confirm("정말 이 음식을 삭제하겠습니까?");
-			if(flag){
-				fn_delFood(foodNum);
-			}
-			
-		}else if(e.which===1){
-			
-		}
-	});
-});
+
 </script>
 
 </head>
@@ -50,7 +48,7 @@ $(document).ready(function(){
 	<c:if test="${not empty list }">
 		
 		<c:forEach items="${list }" var="f">
-			<div id="${f.num }" class="div_food">
+			<div id="${f.num }" class="div_food" onclick="fn_foodClick(${f.num })">
 			
 				<input type="hidden" value=${f.c_num } id="c_num">
 				<input type="hidden" value=${f.num } id="num">

@@ -151,7 +151,7 @@ public class FoodController {
 				dir.mkdir();
 			}
 		
-		if(file!=null && !file.equals("")) {
+		if(file!=null) {
 			// make img file
 			String fileName=file.getOriginalFilename();
 			String[] arr=fileName.split("\\.");

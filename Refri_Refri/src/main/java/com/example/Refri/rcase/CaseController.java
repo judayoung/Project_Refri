@@ -123,6 +123,7 @@ public class CaseController {
 		
 		Case c=service.getByDisp(disp, r);
 		
+		// 케이스에 있는 음식 리스트를 불러온다.
 		ArrayList<Food> foodList=f_service.getByCase(c.getNum());
 		
 		ModelAndView mav=new ModelAndView("case/disp/disp_all","c",c);
@@ -148,7 +149,9 @@ public class CaseController {
 		HttpSession session = req.getSession(false);
 		Refri r = (Refri) session.getAttribute("r");
 
+		// 선택한 냉장고의 케이스들을 리스트로 가져온다.
 		ArrayList<Case> list = service.getByRefri(r);
+		// 지정된 디스플레이가 있는 케이스들을 리스트로 가져온다.
 		ArrayList<Case> dispList=new ArrayList<Case>();
 		for(int i=0;i<list.size();i++) {
 			Case c=list.get(i);

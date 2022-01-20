@@ -24,21 +24,23 @@ function fn_loadDisp(url, sendData){
 			sendData 
 	)
 	.done(function(json){
-		//alert(json);
-		//진열장 초기화.
-		for(var i=0;i<=10;i++){
+		//디스플레이 초기화 : 디스플레이에 번호 부여하기
+		for(var i=1;i<=10;i++){
 			$("#"+i).html(i);		
 		}
-		var list=JSON.parse(json);
-		//alert(list.length);  //list.size 나 list.size()안됨. 배열형태라서.
+		
+		//디스플레이 초기화2 : 디스플레이가 정해진 케이스들을 세팅.
+		var list=JSON.parse(json);  //배열
 		for(var i=0;i<list.length;i++){
 			var c=list[i];
 			var html=c.disp+" : "+c.name+" ";
 			html+="<button onclick='fn_addFoodPopup("+c.num+")' class='btn btn-outline-warning btn-sm' type=button style='font-size: 8px; padding-left: 5px; padding-right: 5px;'> + </button>";
-			html+="<br><div id='disp"+c.disp+"'></div>";
+			html+="<br>";
+			//이 div에서 음식 리스트를 보여준다.
+			html+="<div id='disp"+c.disp+"'></div>";
 
 			$("#"+c.disp).html(html);
-			
+			//디스플레이에 각 디스플레이 페이지를 불러옴
 			fn_putDisp(c.disp);
 		}
 		
@@ -46,8 +48,6 @@ function fn_loadDisp(url, sendData){
 	.fail(function(){
 		alert("error");
 	});
-	
-
 }
 
 function fn_putDisp(disp){
@@ -126,6 +126,8 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
+	
 
 	
 	
@@ -194,6 +196,10 @@ $(document).ready(function(){
 			<span class="badge badge-pill badge-primary">Tip</span>
 			케이스 좌클릭하면 냉장고 진열장위치를 선택가능! (우클릭시 선택 취소.) 
 		</p>
+		<p class="text-primary">
+			<span class="badge badge-pill badge-primary">Tip</span>
+			음식을 좌클릭하면 수정/삭제가 가능해요. (다른 공간 클릭시 수정/삭제 하지 않음.)
+		</p>
 	</div>
 	
 	
@@ -240,7 +246,7 @@ $(document).ready(function(){
       				<th>오른쪽 날개</th>
     			</tr>
     			<tr>
-      				<th scope="row" rowspan=2  style="text-align: center;">상부</th>
+      				<th scope="row" rowspan=2  style="text-align: center;">냉장실</th>
       				<td rowspan=2 class="wing" id=1>1</td>
       				<td colspan=2 class="cen" id=2>2</td>
       				<td rowspan=2 class="wing" id=4>4</td>
@@ -250,7 +256,7 @@ $(document).ready(function(){
     				<td colspan=2 class="cen" id=3>3</td>
     			</tr>
     			<tr>
-      				<th scope="row" rowspan=2  style="text-align: center;">하부</th>
+      				<th scope="row" rowspan=2  style="text-align: center;">냉동실</th>
       				<td rowspan=2 class="wing" id=5>5<br></td>
       				<td class="half" id=6>6<br></td>
       				<td class="half" id=8>8<br></td>
