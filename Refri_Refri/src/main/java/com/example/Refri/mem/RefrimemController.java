@@ -23,6 +23,8 @@ public class RefrimemController {
 	
 	@RequestMapping("login")
 	public ModelAndView login(HttpServletRequest req,Refrimem member) {
+		System.out.println("----/refrimem/login");
+		
 		String id=member.getId();
 		String loginResult=service.login(id, member.getPwd());
 		
@@ -38,7 +40,6 @@ public class RefrimemController {
 				Refri r=r_service.getFirst(id);
 				session.setAttribute("r", r);
 				session.setAttribute("section", "caseList");
-				System.out.println("----case/list");
 			}
 			
 			mav.setViewName("member/main");

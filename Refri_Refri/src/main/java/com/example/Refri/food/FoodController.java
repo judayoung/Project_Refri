@@ -31,7 +31,7 @@ import com.example.Refri.refri.Refri;
 @Controller
 public class FoodController {
 	
-	private static final String path="D:\\java\\img\\refri\\food";
+	private static final String path="C:\\project_img\\refri\\food";
 	//private static final String path="E:\\java\\img\\refri\\food";
 	
 	@Autowired 
@@ -45,8 +45,10 @@ public class FoodController {
 	
 	
 	
-	@RequestMapping("addFood")
+	@RequestMapping("addFoodForm")
 	public ModelAndView addFood(@RequestParam("c_num") int c_num) {
+		System.out.println("----/food/addFoodForm");
+		
 		// go to addFood form.
 		Case c=c_service.getCase(c_num);
 		
@@ -87,6 +89,8 @@ public class FoodController {
 	
 	@RequestMapping("img")
 	public ResponseEntity<byte[]> imgload(String num){
+		System.out.println("----/food/img/"+num);
+		
 		String img="";
 		if(num!=null && !num.equals("")) {
 			img="0.jpg";
@@ -117,6 +121,8 @@ public class FoodController {
 	}
 	@RequestMapping("imgExist")
 	public ResponseEntity<byte[]> imgExistload(String filename){
+		System.out.println("----/food/imgExist");
+		
 		File imgFile=new File(path+"\\"+filename);
 		
 		HttpHeaders header=new HttpHeaders();
@@ -132,9 +138,14 @@ public class FoodController {
 	
 	@RequestMapping("addOne")
 	public ModelAndView add(Food f) {
+		System.out.println("----/food/addOne");
+		
+		//1. db에 저장한다.
 		service.addFood(f);
 		int num=service.getLast().getNum();
 		
+		//2. 이미지를 저장한다.
+		System.out.println("이미지를 저장합니다. "+f.getFile());
 		saveImg(num,f.getFile());
 		System.out.println("food add : "+f);
 		
@@ -143,6 +154,8 @@ public class FoodController {
 	}
 	
 	public void saveImg(int num, MultipartFile file) {
+		System.out.println("----/food/saveImg");
+		
 		System.out.println(file.getOriginalFilename());
 		
 			// make directory folder
@@ -171,6 +184,8 @@ public class FoodController {
 	
 	@RequestMapping("del")
 	public ModelAndView del(Food food) {
+		System.out.println("----/food/del");
+		
 		int num=food.getNum();
 		service.delFood(num);
 		

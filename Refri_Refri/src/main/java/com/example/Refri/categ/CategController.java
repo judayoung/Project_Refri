@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CategController {
 	
-	private static final String path="D:\\java\\img\\refri\\categ";
+	private static final String path="C:\\project_img\\refri\\categ";
 	//private static final String path="E:\\java\\img\\refri\\categ";
 	
 	@Autowired

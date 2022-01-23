@@ -31,6 +31,8 @@ public class CaseController {
 
 	@RequestMapping("listSwitch")
 	public ModelAndView listSwitch(HttpServletRequest req) {
+		System.out.println("----/case/listSwitch");
+		
 		HttpSession session = req.getSession(false);
 		// 냉장고가 없다면 되돌아가기.
 		String id=(String) session.getAttribute("id");
@@ -48,6 +50,8 @@ public class CaseController {
 
 	@RequestMapping("list")
 	public ModelAndView list(HttpServletRequest req) {
+		System.out.println("----/case/list");
+		
 		HttpSession session = req.getSession(false);
 		String id = (String) session.getAttribute("id");
 		Refri r = (Refri) session.getAttribute("r");
@@ -69,6 +73,8 @@ public class CaseController {
 	@RequestMapping("addSwitch")
 	public ModelAndView addSwitch(HttpServletRequest req,
 			@RequestParam(value="r_num", required=false) String r_num) {
+		System.out.println("----/case/addSwitch");
+		
 		HttpSession session = req.getSession(false);
 		String id=(String) session.getAttribute("id");
 		boolean flag=r_service.isRefri(id);
@@ -90,6 +96,8 @@ public class CaseController {
 
 	@RequestMapping("addCase")
 	public ModelAndView addCase() {
+		System.out.println("----/case/addCase");
+		
 		// go to addCase form.
 		ModelAndView mav=new ModelAndView("case/addCase");
 		return mav;
@@ -97,6 +105,8 @@ public class CaseController {
 
 	@RequestMapping("add")
 	public String add(Case c, HttpServletRequest req) {
+		System.out.println("----/case/add");
+		
 		service.addCase(c);
 
 		return "member/main";
@@ -105,6 +115,8 @@ public class CaseController {
 	
 	@RequestMapping("addDisp")
 	public String editDisp(Case c) {
+		System.out.println("----/case/addDisp");
+		
 		//이미 넣어진 케이스는 수정하지 않음.
 		Case ori=service.getCase(c.getNum());
 		c.setR_num(ori.getR_num());
@@ -118,6 +130,8 @@ public class CaseController {
 	@RequestMapping("findDisp")
 	public ModelAndView findDisp(@RequestParam("disp") int disp
 			, HttpServletRequest req) {
+		System.out.println("----/case/findDisp/"+disp);
+		
 		HttpSession session = req.getSession(false);
 		Refri r = (Refri) session.getAttribute("r");
 		
@@ -133,6 +147,8 @@ public class CaseController {
 	@RequestMapping("findCaseByDisp")
 	public ModelAndView findCaseByDisp(@RequestParam("disp") int disp
 			, HttpServletRequest req) {
+		System.out.println("----/case/findCaseByDisp");
+		
 		HttpSession session = req.getSession(false);
 		Refri r = (Refri) session.getAttribute("r");
 		
@@ -146,6 +162,8 @@ public class CaseController {
 	
 	@RequestMapping("listDisp")
 	public ModelAndView listDisp(HttpServletRequest req) {
+		System.out.println("----/case/listDisp");
+		
 		HttpSession session = req.getSession(false);
 		Refri r = (Refri) session.getAttribute("r");
 
@@ -166,6 +184,8 @@ public class CaseController {
 	
 	@RequestMapping("removeFromDisp")
 	public String removeFromDisp(Case c, HttpServletRequest req) {
+		System.out.println("----/case/removeFromDisp");
+		
 		HttpSession session=req.getSession(false);
 		int disp=c.getDisp();
 		System.out.println("removeFromDisp : "+disp);

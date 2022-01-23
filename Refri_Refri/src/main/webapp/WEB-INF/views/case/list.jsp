@@ -56,7 +56,7 @@ function fn_putDisp(disp){
 
 function fn_addFoodPopup(c_num){
 	// 1. Add Food Popup   window.open('팝업주소','팝업창 이름','팝업창 설정');
-	var popup=window.open("/food/addFood?c_num="+c_num,"Add Food Popup",
+	var popup=window.open("/food/addFoodForm?c_num="+c_num,"Add Food Popup",
 			"width=300px, height=700px, scrollbars=yes, top=100px, left=300px");
 	
 	location.href="/member/main";

@@ -24,7 +24,7 @@ public class RefriController {
 	@Autowired
 	private RefriService service;
 	
-	private static final String path="D:\\java\\img\\refri";
+	private static final String path="C:\\project_img\\refri";
 	//private static final String path="E:\\java\\img\\refri";
 	private static final String defaultImg="img_refri_1.jpg";
 

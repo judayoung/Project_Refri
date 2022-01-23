@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CategService {
-	
-	private static final String path="D:\\java\\img\\refri\\food";
+
+	private static final String path="C:\\project_img\\refri\\food";
 	//private static final String path="E:\\java\\img\\refri\\food";
 	
 	@Autowired
