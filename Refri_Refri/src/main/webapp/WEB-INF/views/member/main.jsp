@@ -104,7 +104,7 @@ $(document).ready(function(){
 
 
 <div id="footer" style="clear:both;">
-	21/12/09 ~ 22/02/10 - 집에 뭐있지?
+	21/12/09 ~ 22/01/28 - 집에 뭐있지?
 </div>
 
 

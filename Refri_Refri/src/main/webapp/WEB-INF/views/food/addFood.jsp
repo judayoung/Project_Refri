@@ -123,11 +123,14 @@ $(document).ready(function(){
 		}
 		
 		f.quan.value=(f.quan.value=="")? 0:f.quan.value;
-		f.file.value=(f.file.value=="")? null:f.file.value;
+		if(f.file.value==""){ //선택된 이미지파일이 없으면 가져오지 않는다.
+			$("#file").attr("name","notfile");
+		}
 		
 		f.action="/food/addOne";
 		f.method="post";
 		f.enctype="multipart/form-data";
+		
 		f.submit();
 	});
 	$("#addMore").click(function(){
@@ -167,7 +170,7 @@ $(document).ready(function(){
 				<td>
 					<div id="div_img">
 					</div>
-					<input type="file" name="file">
+					<input type="file" name="file" id="file">
 				</td>
 			</tr>
 			<tr>

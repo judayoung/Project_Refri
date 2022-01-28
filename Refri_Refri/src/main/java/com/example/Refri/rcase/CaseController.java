@@ -130,7 +130,7 @@ public class CaseController {
 	@RequestMapping("findDisp")
 	public ModelAndView findDisp(@RequestParam("disp") int disp
 			, HttpServletRequest req) {
-		System.out.println("----/case/findDisp/"+disp);
+		System.out.print("----/case/findDisp/"+disp);
 		
 		HttpSession session = req.getSession(false);
 		Refri r = (Refri) session.getAttribute("r");

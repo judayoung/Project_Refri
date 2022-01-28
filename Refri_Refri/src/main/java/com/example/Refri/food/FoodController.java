@@ -89,7 +89,7 @@ public class FoodController {
 	
 	@RequestMapping("img")
 	public ResponseEntity<byte[]> imgload(String num){
-		System.out.println("----/food/img/"+num);
+		System.out.print("----/food/img/"+num);
 		
 		String img="";
 		if(num!=null && !num.equals("")) {
@@ -138,7 +138,7 @@ public class FoodController {
 	
 	@RequestMapping("addOne")
 	public ModelAndView add(Food f) {
-		System.out.println("----/food/addOne");
+		System.out.println("----/food/addOne : "+f);
 		
 		//1. db에 저장한다.
 		service.addFood(f);
@@ -147,7 +147,6 @@ public class FoodController {
 		//2. 이미지를 저장한다.
 		System.out.println("이미지를 저장합니다. "+f.getFile());
 		saveImg(num,f.getFile());
-		System.out.println("food add : "+f);
 		
 		ModelAndView mav=new ModelAndView("food/addFood","closeFlag",true);
 		return mav;
@@ -156,15 +155,15 @@ public class FoodController {
 	public void saveImg(int num, MultipartFile file) {
 		System.out.println("----/food/saveImg");
 		
-		System.out.println(file.getOriginalFilename());
-		
-			// make directory folder
-			File dir=new File(path);
-			if(!dir.exists()) {
-				dir.mkdir();
-			}
+		// make directory folder
+		File dir=new File(path);
+		if(!dir.exists()) {
+			dir.mkdir();
+		}	
 		
 		if(file!=null) {
+			System.out.println(file.getOriginalFilename());
+			
 			// make img file
 			String fileName=file.getOriginalFilename();
 			String[] arr=fileName.split("\\.");
@@ -202,7 +201,7 @@ public class FoodController {
 					File f=new File(path+"\\"+num+"."+fileFormat);
 					f.delete();
 					break;
-				}
+				}		
 			}
 		}
 		
